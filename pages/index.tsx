@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { ASSETS_PREFIX } from '../constants';
 import Link from 'next/link'
 import { getPosts } from '../utils/contentful';
 import { Entry } from "contentful";
