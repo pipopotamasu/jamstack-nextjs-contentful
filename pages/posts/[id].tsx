@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import { getPost, getAllPostIds } from '../../utils/contentful';
+import { getPost, getAllPostIds, Post as PostType } from '../../utils/contentful';
 
-export default function Post({ postData }: { postData: Post }) {
-  const { title, description, publishedAt } = postData;
+export default function Post({ postData }: { postData: PostType }) {
+  const { title, description, publishedAt, image, richText } = postData;
 
   return (
     <div>
@@ -12,6 +12,11 @@ export default function Post({ postData }: { postData: Post }) {
       <h1>{title}</h1>
       <small>{publishedAt}</small>
       <p>{description}</p>
+      {
+        image && (
+          <img src={image.fields.file.url} alt={image.fields.title} />
+        )
+      }
     </div>
   )
 }

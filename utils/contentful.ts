@@ -1,4 +1,16 @@
-import { createClient } from "contentful";
+import { createClient, EntryFields } from "contentful";
+import { Entry, Asset } from "contentful";
+
+export type Post = {
+  title: EntryFields.Text,
+  image?: EntryFields.Link<Asset['fields']>,
+  richText: EntryFields.RichText,
+  description: EntryFields.Text,
+  publishedAt: EntryFields.Date
+}
+
+export type PostEntry = Entry<Post>;
+
 
 export const client = createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
