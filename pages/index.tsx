@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from 'styles/Home.module.css'
 import Link from 'next/link'
-import { getPosts, PostEntry } from '../utils/contentful';
+import { getPosts, PostEntry } from 'utils/contentful';
 
 export default function Home({ items }: { items: PostEntry[] }) {
   return (
