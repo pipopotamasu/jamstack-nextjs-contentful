@@ -5,12 +5,14 @@ import { getPosts, PostEntry } from '../utils/contentful';
 
 export default function Home({ items }: { items: PostEntry[] }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.main}>
       <Head>
-        <title>Posts</title>
+        <title>Jamstack nextjs contentful</title>
       </Head>
 
-      <ul>
+      <h1>Contents</h1>
+
+      <ul className={styles.list}>
         {
           items.map((item) => {
             return (
