@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { getPost, getAllPostIds, Post as PostType } from '../../utils/contentful';
 import { Document } from '@contentful/rich-text-types';
+import styles from '../../styles/Home.module.css'
+import { getPost, getAllPostIds, Post as PostType } from '../../utils/contentful';
 
 export default function Post({ postData }: { postData: PostType }) {
   const { title, description, publishedAt, image, richText } = postData;
 
   return (
-    <div>
+    <div className={styles.main}>
       <Head>
         <title>{title}</title>
       </Head>
