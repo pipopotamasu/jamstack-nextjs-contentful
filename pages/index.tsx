@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { getPosts } from '../utils/contentful';
-import { Entry } from "contentful";
+import { getPosts, PostEntry } from '../utils/contentful';
 
-export default function Home({ items }: { items: Entry<Post>[] }) {
+export default function Home({ items }: { items: PostEntry[] }) {
   return (
     <div className={styles.container}>
       <Head>
