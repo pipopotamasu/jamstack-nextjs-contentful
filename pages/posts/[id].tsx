@@ -1,5 +1,7 @@
 import Head from 'next/head'
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { getPost, getAllPostIds, Post as PostType } from '../../utils/contentful';
+import { Document } from '@contentful/rich-text-types';
 
 export default function Post({ postData }: { postData: PostType }) {
   const { title, description, publishedAt, image, richText } = postData;
@@ -17,6 +19,7 @@ export default function Post({ postData }: { postData: PostType }) {
           <img src={image.fields.file.url} alt={image.fields.title} />
         )
       }
+      <div dangerouslySetInnerHTML={{ __html: documentToHtmlString(richText as Document) }} />
     </div>
   )
 }
