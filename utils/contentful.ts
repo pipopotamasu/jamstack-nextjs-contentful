@@ -1,5 +1,4 @@
-import { createClient, EntryFields } from "contentful";
-import { Entry, Asset } from "contentful";
+import { createClient, EntryFields, Entry, Asset } from "contentful";
 
 export type Post = {
   title: EntryFields.Text,
