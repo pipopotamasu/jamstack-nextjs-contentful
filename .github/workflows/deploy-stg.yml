@@ -5,7 +5,7 @@ on:
       - develop
   repository_dispatch:
 jobs:
-  deploy:
+  deploy-stg:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -27,7 +27,7 @@ jobs:
         run: |
           yarn export
           touch out/.nojekyll
-      - name: deploy
+      - name: deploy to prod
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
