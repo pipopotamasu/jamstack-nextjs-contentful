@@ -4,6 +4,7 @@ on:
     branches:
       - develop
   repository_dispatch:
+    types: [stg]
 jobs:
   deploy-stg:
     runs-on: ubuntu-latest
