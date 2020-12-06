@@ -9,6 +9,10 @@ export type Post = {
   pathName: EntryFields.Text,
 }
 
+const DEFAULT_ENTRIES_PARAMS = {
+  content_type: 'practice'
+}
+
 export type PostEntry = Entry<Post>;
 
 export const client = createClient({
@@ -20,9 +24,7 @@ export const client = createClient({
 });
 
 export async function getPosts () {
-  const entries = await client.getEntries<Post>({
-    content_type: 'practice'
-  });
+  const entries = await client.getEntries<Post>(DEFAULT_ENTRIES_PARAMS);
   return entries.items;
 }
 
@@ -33,8 +35,8 @@ export async function getPost (id: string) {
 
 export async function getPostByPathName (path: string) {
   const entries = await client.getEntries<Post>({
+    ...DEFAULT_ENTRIES_PARAMS,
     'fields.pathName': path,
-    content_type: 'practice'
   });
   return entries.items[0].fields;
 }
