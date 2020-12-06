@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Document } from '@contentful/rich-text-types';
 import styles from 'styles/Home.module.css'
-import { getPostByPathName, getAllPostIds, Post as PostType } from 'utils/contentful';
+import { getPostByPathName, getAllPostPathNames, Post as PostType } from 'utils/contentful';
 
 export default function Post({ postData }: { postData: PostType }) {
   const { title, description, publishedAt, image, richText } = postData;
@@ -26,7 +26,7 @@ export default function Post({ postData }: { postData: PostType }) {
 }
 
 export async function getStaticPaths() {
-  const paths = await getAllPostIds();
+  const paths = await getAllPostPathNames();
 
   return {
     paths,
