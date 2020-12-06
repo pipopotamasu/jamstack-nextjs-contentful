@@ -39,13 +39,13 @@ export async function getPostByPathName (path: string) {
   return entries.items[0].fields;
 }
 
-export async function getAllPostPathNames () {
+export async function getAllPostPaths () {
   const items = await getPosts();
 
   return items.map((item) => {
     return {
       params: {
-        id: item.fields.pathName
+        path: item.fields.pathName
       }
     }
   });
