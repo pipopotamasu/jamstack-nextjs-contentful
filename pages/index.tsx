@@ -17,7 +17,7 @@ export default function Home({ items }: { items: PostEntry[] }) {
           items.map((item) => {
             return (
               <li key={item.sys.id}>
-                <Link href={`/posts/${item.sys.id}`}>
+                <Link href={`/posts/${item.fields.pathName}`}>
                   <a>
                     <h2>{item.fields.title}</h2>
                     <p>{item.fields.publishedAt}</p>

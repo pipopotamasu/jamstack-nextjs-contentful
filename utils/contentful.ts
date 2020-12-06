@@ -5,7 +5,8 @@ export type Post = {
   image?: EntryFields.Link<Asset['fields']>,
   richText: EntryFields.RichText,
   description: EntryFields.Text,
-  publishedAt: EntryFields.Date
+  publishedAt: EntryFields.Date,
+  pathName: EntryFields.Text,
 }
 
 export type PostEntry = Entry<Post>;
@@ -19,7 +20,9 @@ export const client = createClient({
 });
 
 export async function getPosts () {
-  const entries = await client.getEntries<Post>();
+  const entries = await client.getEntries<Post>({
+    content_type: 'practice'
+  });
   return entries.items;
 }
 
@@ -28,13 +31,21 @@ export async function getPost (id: string) {
   return entry.fields;
 }
 
+export async function getPostByPathName (path: string) {
+  const entries = await client.getEntries<Post>({
+    'fields.pathName': path,
+    content_type: 'practice'
+  });
+  return entries.items[0].fields;
+}
+
 export async function getAllPostIds () {
   const items = await getPosts();
 
   return items.map((item) => {
     return {
       params: {
-        id: item.sys.id
+        id: item.fields.pathName
       }
     }
   });
