@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<script src="https://unpkg.com/contentful-ui-extensions-sdk@3"></script>
+<script>
+window.contentfulExtension.init(function(sdk) {
+  const button = document.querySelector('#deploy-stg');
+  button.addEventListener('click', async () => {
+    const entry = await sdk.space.getEntry(sdk.ids.entry);
+    sdk.space.updateEntry(entry);
+  });
+});
+</script>
+<button id="deploy-stg" type="button">Apply to staging</button>

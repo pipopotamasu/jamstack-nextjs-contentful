@@ -15,6 +15,11 @@ https://pipopotamasu.github.io/jamstack-nextjs-contentful/
 1. Next.js fetches **preview posts data** from contentful and builds static files.
 1. github actions deploy static files to `gh-pages-stg` branch.
 
+#### Extension for kicking saved action for staging deploy
+To deploy on staging environment, I prepared staging deploy extention which kicks saved action. We can't kick saved action on contentful web UI in normal way so we have to prepare api call something to trigger it. This extension calls api which kicks saved action.
+
+Check `deploy_stg_extension.html` out!
+
 ## Get started
 ```bash
 $ git clone https://github.com/pipopotamasu/jamstack-nextjs-contentful.git
